@@ -1,23 +1,31 @@
 # Puppet Managed .bashrc
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-        . /etc/bashrc
+# Check for Skel Updates
+diff -q /etc/skel/.bashrc ~/.bashrc > /dev/null
+newbashrc=$?
+if [[ $newbashrc -gt 0 ]]
+then
+        echo "/etc/skel has new bashrc. Updating your local copy"
+        cp /etc/skel/.bashrc ~/.bashrc
+        source ~/.bashrc
+else
+        # Source global definitions
+        if [ -f /etc/bashrc ]; then
+                . /etc/bashrc
+        fi
+
+        # User specific aliases and functions
+
+        alias rootme='sudo su -'
+        alias xrm='sudo rm'
+        alias xcp='sudo cp'
+        alias xpat='sudo puppet agent --test --environment=master'
+        alias xr10k='sudo r10k deploy environment -p -v'
+        alias xvi='sudo vim'
+        alias xyum='sudo yum'
+        alias ll='ls -alh'
+        alias vi='vim'
+
+        set -o vi
 fi
-
-# User specific aliases and functions
-
-alias rootme='sudo su -'
-alias xrm='sudo rm'
-alias xcp='sudo cp'
-alias xpat='sudo puppet agent --test --environment=master'
-alias xr10k='sudo r10k deploy environment -p -v'
-alias xvi='sudo vi'
-alias xyum='sudo yum'
-alias ll='ls -alh'
-alias uprc="cp /etc/skel/.bashrc ~/.bashrc"
-alias vi='vim'
-
-
-set -o vi
 
