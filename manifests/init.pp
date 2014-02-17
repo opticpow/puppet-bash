@@ -15,3 +15,4 @@ class bash {
       source  => 'puppet:///modules/bash/bashrc',
       require => Package['bash']
   }
+}
