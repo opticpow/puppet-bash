@@ -1,0 +1,21 @@
+# Puppet Managed .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+# User specific aliases and functions
+
+alias rootme='sudo su -'
+alias xrm='sudo rm'
+alias xcp='sudo cp'
+alias xpat='sudo puppet agent --test --environment=master'
+alias xr10k='sudo r10k deploy environment -p -v'
+alias xvi='sudo vi'
+alias ll='ls -alh'
+alias uprc="cp /etc/skel/.bashrc ~/.bashrc"
+
+
+set -o vi
+
