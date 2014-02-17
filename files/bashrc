@@ -13,8 +13,10 @@ alias xcp='sudo cp'
 alias xpat='sudo puppet agent --test --environment=master'
 alias xr10k='sudo r10k deploy environment -p -v'
 alias xvi='sudo vi'
+alias xyum='sudo yum'
 alias ll='ls -alh'
 alias uprc="cp /etc/skel/.bashrc ~/.bashrc"
+alias vi='vim'
 
 
 set -o vi
